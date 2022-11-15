@@ -1,0 +1,20 @@
+<div class="topbar" *ngIf="router.url !== '/login'" ng-onload="loadProjects()">
+  <div class="bar">
+    <nav class="nav navbar-nav navbar-right">
+      <ul>
+        <li style="margin-right: 5rem;"><img src="assets/settings.png" />
+          <ul>
+            <li><a [routerLink]="['/user-list']">Users</a></li>
+            <li *ngIf="isAdmin"><a [routerLink]="['/register']">Register User</a></li>
+          </ul>
+        </li>
+        <li style="margin-right: 0.5rem;"><img src="assets/unnamed.png" />
+          <ul>
+            <li><a [routerLink]="['/profile']">Profile</a></li>
+            <li><a (click)="logout()">Sign Out</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
