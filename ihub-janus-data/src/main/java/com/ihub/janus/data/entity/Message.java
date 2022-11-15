@@ -15,7 +15,7 @@ import lombok.Setter;
 @Table(name = "message")
 @Getter
 @Setter
-public class Message {
+public class Message extends BaseEntity {
 
     /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 0;

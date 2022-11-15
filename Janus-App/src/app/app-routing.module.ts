@@ -42,7 +42,7 @@ const routes: Routes = [
         path: 'attachments',
         component: AttachmentComponent,
         canActivate: [AuthGuard],
-        data: { roles: [ Role.ROLE_DEVELOPER, Role.ROLE_PROJECT_MANAGER, Role.ROLE_TESTER] }
+        data: { roles: [ Role.ROLE_ADMINISTRATOR, Role.ROLE_DEVELOPER, Role.ROLE_PROJECT_MANAGER, Role.ROLE_TESTER] }
       }, 
 
 
