@@ -64,11 +64,11 @@ export class MessageComponent implements OnInit {
   onSubmit() {
     if (this.issueForm.valid) {
       this.saveIssue();
-      this.toastrService.success(status || '', `Successfully added issue!`);
+      this.toastrService.success(status || '', `Successfully Message Saved!`);
       this.router.navigate(['/dashboard']);
     } else {
       this.validateAllFormFields(this.issueForm);
-      this.toastrService.danger(status || '', `Failed to add issue!`);
+      this.toastrService.danger(status || '', `Failed to save Message!`);
     }
   }
   reset() {

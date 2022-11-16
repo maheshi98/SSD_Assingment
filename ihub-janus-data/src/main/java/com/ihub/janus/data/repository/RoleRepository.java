@@ -1,7 +1,4 @@
-/*
- * Copyright (c) iHub 2021. All rights reserved. <br><br> 
- *
- */
+//SSD Assignment 2
 package com.ihub.janus.data.repository;
 
 import java.util.List;

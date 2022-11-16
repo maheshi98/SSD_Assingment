@@ -1,7 +1,3 @@
-/*
- * Copyright (c) iHub 2021. All rights reserved. <br><br> 
- *
- */
 package com.ihub.janus.data.repository;
 
 import java.util.List;

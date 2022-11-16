@@ -46,26 +46,6 @@ export class LoginComponent implements OnInit {
   // convenience getter for easy access to form fields
   get f() { return this.formGroup.controls; }
 
-
-
-  /*loginProcess(){
-    console.log(this.formGroup)
-    this.submitted = true;
-    if(this.formGroup.valid){
-    console.log(this.formGroup.value)
-      this.authenticationService.login(this.formGroup.value).subscribe(result => {
-      this.alerts.setMessage('Login succesfull!','success');
-       this.router.navigate(['/landing-page'],);
-      })
-
-    }else{
-      this.alerts.setMessage('Username or password is invalid.','error');
-      return;
-    }
-
-
-  }*/
-
   onSubmit() {
     this.submitted = true;
     this.loading = true;
@@ -81,12 +61,5 @@ export class LoginComponent implements OnInit {
       });
 
   }
-
-
-  // public getAccessToken(authRequest) {
-  //   console.log("in get access token")
-  // let response = this.authenticationService.login(authRequest).
-  //   subscribe(data => console.log("Token :" + data));
-  // }
 
 }

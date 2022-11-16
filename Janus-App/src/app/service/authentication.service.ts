@@ -11,7 +11,6 @@ import { ErrorInterceptor } from '../auth/error.interceptor';
   providedIn: 'root'
 })
 export class AuthenticationService {
-  // static flag = true;
   private userSubject: BehaviorSubject<User>;
   public currentUser: Observable<User>;
 

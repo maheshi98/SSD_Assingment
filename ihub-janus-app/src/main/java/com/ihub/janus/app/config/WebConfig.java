@@ -1,7 +1,4 @@
-/*
- * Copyright (c) iHub 2021. All rights reserved. <br><br> 
- *
- */
+//SSD Assignment 2
 package com.ihub.janus.app.config;
 
 import org.springframework.context.annotation.Configuration;
@@ -24,6 +21,5 @@ public class WebConfig implements WebMvcConfigurer {
 	@Override
 	public void addCorsMappings(CorsRegistry registry) {
 		registry.addMapping("/**").allowedOrigins("http://localhost:4200");
-//		registry.addMapping("/**").allowedOrigins("http://janus-angular-demo.s3-website-ap-southeast-1.amazonaws.com:4200");
 	}
 }

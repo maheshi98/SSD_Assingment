@@ -1,7 +1,4 @@
-/*
- * Copyright (c) iHub 2021. All rights reserved. <br><br> 
- *
- */
+//SSD Assignment 2
 package com.ihub.janus.app.controller;
 
 import java.util.List;
@@ -121,24 +118,6 @@ public class UserController {
 	@GetMapping(value = "/{id}", headers = Constants.ApiVersion.V1)
 	@JsonView(Views.Role.class)
 	public ResponseEntity<User> getByUserId(@PathVariable("id") Long id) {
-
-		LOGGER.debug("get User {}", id);
-
-		User obj = userService.getById(id);
-
-		return new ResponseEntity<User>(obj, HttpStatus.OK);
-
-	}
-
-	/**
-	 * Gets the user projects by id.
-	 *
-	 * @param id the id
-	 * @return the by user id
-	 */
-	@GetMapping(value = "/projects/{id}", headers = Constants.ApiVersion.V1)
-	@JsonView(Views.ProjectUser.class)
-	public ResponseEntity<User> getUserProjectsById(@PathVariable("id") Long id) {
 
 		LOGGER.debug("get User {}", id);
 

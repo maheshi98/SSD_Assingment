@@ -1,7 +1,4 @@
-/*
- * Copyright (c) iHub 2021. All rights reserved. <br><br> 
- *
- */
+//SSD Assignment 2
 package com.ihub.janus.app.dto;
 
 import org.springframework.security.core.GrantedAuthority;
