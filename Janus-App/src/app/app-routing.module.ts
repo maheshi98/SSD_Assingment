@@ -28,21 +28,21 @@ const routes: Routes = [
         path: 'dashboard',
         component: DashboardComponent,
         canActivate: [AuthGuard],
-        data: { roles: [Role.ROLE_ADMINISTRATOR, Role.ROLE_DEVELOPER, Role.ROLE_PROJECT_MANAGER, Role.ROLE_TESTER] }
+        data: { roles: [Role.ROLE_MANAGER, Role.ROLE_WORKER] }
       }, 
 
       {
         path: 'message',
         component: MessageComponent,
         canActivate: [AuthGuard],
-        data: { roles: [Role.ROLE_ADMINISTRATOR, Role.ROLE_DEVELOPER, Role.ROLE_PROJECT_MANAGER, Role.ROLE_TESTER] }
+        data: { roles: [Role.ROLE_MANAGER, Role.ROLE_WORKER] }
       }, 
 
       {
         path: 'attachments',
         component: AttachmentComponent,
         canActivate: [AuthGuard],
-        data: { roles: [ Role.ROLE_ADMINISTRATOR, Role.ROLE_DEVELOPER, Role.ROLE_PROJECT_MANAGER, Role.ROLE_TESTER] }
+        data: { roles: [ Role.ROLE_MANAGER] }
       }, 
 
 

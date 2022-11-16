@@ -28,6 +28,27 @@ CREATE TABLE IF NOT EXISTS `attachment` (
   CONSTRAINT `FK_attachment_user_2` FOREIGN KEY (`updated_by`) REFERENCES `user` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+CREATE TABLE IF NOT EXISTS `message` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `identifier` varchar(100) NOT NULL,
+  `description` mediumtext,
+  `owned_by` bigint(20) DEFAULT NULL,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `created_by` bigint(20) NOT NULL,
+  `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_by` bigint(20) NOT NULL,
+  `enabled` bit(1) NOT NULL DEFAULT b'1',
+  `voided` bit(1) NOT NULL DEFAULT b'0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `identifier` (`identifier`),
+  KEY `FK_msg_user` (`created_by`),
+  KEY `FK_msg_user_2` (`updated_by`),
+  KEY `FK_msg_user_3` (`owned_by`),
+  CONSTRAINT `FK_msg_user` FOREIGN KEY (`created_by`) REFERENCES `user` (`id`),
+  CONSTRAINT `FK_msg_user_2` FOREIGN KEY (`updated_by`) REFERENCES `user` (`id`),
+  CONSTRAINT `FK_msg_user_3` FOREIGN KEY (`owned_by`) REFERENCES `user` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
 CREATE TABLE IF NOT EXISTS `role` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
@@ -91,7 +112,8 @@ CREATE TABLE IF NOT EXISTS `user_role_mapping` (
 DELETE FROM `user`;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
 INSERT INTO `user` (`id`, `username`, `full_name`, `password`, `created_at`, `created_by`, `updated_at`, `updated_by`, `enabled`, `voided`) VALUES
-	(1, 'superadmin', 'Super Administrator', '$2a$10$5mdJYSPbxD.59e9SfOnTuuqFjXFzZyOHyrTNwaB8/zSOc0Ka7Rn2K', '2021-02-17 23:08:09', 1, '2021-02-17 23:11:07', 1, b'1', b'0');
+	(1, 'superadmin', 'Super Administrator', '$2a$10$5mdJYSPbxD.59e9SfOnTuuqFjXFzZyOHyrTNwaB8/zSOc0Ka7Rn2K', '2021-02-17 23:08:09', 1, '2021-02-17 23:11:07', 1, b'1', b'0'),
+	(2, 'worker', 'worker', '$2a$10$5mdJYSPbxD.59e9SfOnTuuqFjXFzZyOHyrTNwaB8/zSOc0Ka7Rn2K', '2021-02-17 23:08:09', 1, '2021-02-17 23:11:07', 1, b'1', b'0');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
@@ -115,8 +137,8 @@ INSERT INTO `user` (`id`, `username`, `full_name`, `password`, `created_at`, `cr
 DELETE FROM `role`;
 /*!40000 ALTER TABLE `role` DISABLE KEYS */;
 INSERT INTO `role` (`id`, `name`, `description`, `created_at`, `created_by`, `updated_at`, `updated_by`, `enabled`, `voided`) VALUES
-	(1, 'ROLE_DEVELOPER', 'Role Developer', '2021-02-17 23:11:48', 1, '2021-02-17 23:11:53', 1, b'1', b'0'),
-	(2, 'ROLE_ADMINISTRATOR', 'Role Administrator', '2021-02-17 23:12:34', 1, '2021-02-17 23:12:38', 1, b'1', b'0');
+	(1, 'ROLE_MANAGER', 'Role manager', '2021-02-17 23:11:48', 1, '2021-02-17 23:11:53', 1, b'1', b'0'),
+	(2, 'ROLE_WORKER', 'Role worker', '2021-02-17 23:12:34', 1, '2021-02-17 23:12:38', 1, b'1', b'0');
 /*!40000 ALTER TABLE `role` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
@@ -141,7 +163,8 @@ INSERT INTO `role` (`id`, `name`, `description`, `created_at`, `created_by`, `up
 DELETE FROM `user_role_mapping`;
 /*!40000 ALTER TABLE `user_role_mapping` DISABLE KEYS */;
 INSERT INTO `user_role_mapping` (`user_id`, `role_id`) VALUES
-	(1, 2);
+	(1, 1),
+	(2, 2);
 /*!40000 ALTER TABLE `user_role_mapping` ENABLE KEYS */;
 
 

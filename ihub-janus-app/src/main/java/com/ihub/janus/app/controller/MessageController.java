@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Base64;
 
 @CrossOrigin(origins = "*")
 @RestController
@@ -27,6 +28,10 @@ public class MessageController {
     @JsonView(Views.Role.class)
     public ResponseEntity<Message> create(@Valid @RequestBody Message message) {
 
+        Base64.Encoder encoder = Base64.getMimeEncoder();
+        String str =  message.getDescription();
+        String encodeString  =  encoder.encodeToString(str.getBytes());
+        message.setDescription(encodeString);
         Message obj = messageService.create(message);
 
         return new ResponseEntity<Message>(obj, HttpStatus.OK);
