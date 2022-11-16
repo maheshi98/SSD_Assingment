@@ -40,7 +40,7 @@ export class HeaderComponent implements OnInit {
   }
 
   get isAdmin() {
-    return (this.currentUser.roles[0] === Role.ROLE_ADMINISTRATOR);
+    return (this.currentUser.roles[0] === Role.ROLE_MANAGER);
   }
 
   logout() {
