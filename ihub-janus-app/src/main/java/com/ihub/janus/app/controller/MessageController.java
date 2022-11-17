@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.security.*;
 import java.util.Base64;
 
 @CrossOrigin(origins = "*")
@@ -26,11 +27,37 @@ public class MessageController {
 
     @PostMapping(value = "/", headers = Constants.ApiVersion.V1)
     @JsonView(Views.Role.class)
-    public ResponseEntity<Message> create(@Valid @RequestBody Message message) {
+    public ResponseEntity<Message> create(@Valid @RequestBody Message message) throws NoSuchAlgorithmException, InvalidKeyException, SignatureException {
 
         Base64.Encoder encoder = Base64.getMimeEncoder();
         String str =  message.getDescription();
         String encodeString  =  encoder.encodeToString(str.getBytes());
+
+        KeyPairGenerator keyPairGen = KeyPairGenerator.getInstance("DSA");
+
+        //Initializing the key pair generator
+        keyPairGen.initialize(2048);
+
+        //Generate the pair of keys
+        KeyPair pair = keyPairGen.generateKeyPair();
+        //Getting the private key from the key pair
+        PrivateKey privKey = pair.getPrivate();
+
+        //Creating a Signature object
+        Signature sign = Signature.getInstance("SHA256withDSA");
+
+        //Initialize the signature
+        sign.initSign(privKey);
+        byte[] bytes = "msg".getBytes();
+
+        //Adding data to the signature
+        sign.update(bytes);
+
+
+        //Calculating the signature
+        byte[] signature = sign.sign();
+        String digitalSign = signature.toString();
+        message.setDigitalSign(digitalSign);
         message.setDescription(encodeString);
         Message obj = messageService.create(message);
 

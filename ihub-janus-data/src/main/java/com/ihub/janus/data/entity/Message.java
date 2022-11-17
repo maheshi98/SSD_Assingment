@@ -32,6 +32,9 @@ public class Message extends BaseEntity {
     @Column(name = "description")
     private String description;
 
+    @Column(name = "digitalsign")
+    private String digitalSign;
+
     @Override
     public String toString() {
         return "Message{" +
