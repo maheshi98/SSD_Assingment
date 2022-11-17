@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.security.*;
 import java.util.Base64;
+import java.util.List;
 
 @CrossOrigin(origins = "*")
 @RestController
@@ -64,4 +65,22 @@ public class MessageController {
         return new ResponseEntity<Message>(obj, HttpStatus.OK);
     }
 
+    @JsonView(Views.Message.class)
+    @GetMapping(value = "/", headers = Constants.ApiVersion.V1)
+    public ResponseEntity<List<Message>> getAll() {
+
+        Base64.Decoder decoder = Base64.getDecoder();
+
+        List<Message> obj = messageService.getAll();
+        return new ResponseEntity<List<Message>>(obj, HttpStatus.OK);
+    }
+
+    @DeleteMapping(value = "/{id}", headers = Constants.ApiVersion.V1)
+    public ResponseEntity<Void> delete(@PathVariable("id") @RequestParam Long id) {
+
+
+        messageService.delete(id);
+
+        return new ResponseEntity<Void>(HttpStatus.OK);
+    }
 }

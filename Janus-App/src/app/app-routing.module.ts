@@ -7,6 +7,8 @@ import { MainComponent } from './main/main.component';
 import { Role } from './entity/role';
 import { MessageComponent } from './components/message/message.component';
 import { AttachmentComponent } from './components/attachment/attachment.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { MessageListComponent } from './components/message/message-list/message-list.component';
 
 
 
@@ -41,6 +43,20 @@ const routes: Routes = [
       {
         path: 'attachments',
         component: AttachmentComponent,
+        canActivate: [AuthGuard],
+        data: { roles: [ Role.ROLE_MANAGER] }
+      }, 
+
+      {
+        path: 'profile',
+        component: ProfileComponent,
+        canActivate: [AuthGuard],
+        data: { roles: [ Role.ROLE_MANAGER] }
+      }, 
+
+      {
+        path: 'message-list',
+        component: MessageListComponent,
         canActivate: [AuthGuard],
         data: { roles: [ Role.ROLE_MANAGER] }
       }, 

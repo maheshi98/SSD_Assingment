@@ -4,6 +4,8 @@
  */
 package com.ihub.janus.data.view;
 
+import com.ihub.janus.data.entity.Message;
+
 /**
  * The Interface BaseViews.
  */
@@ -49,7 +51,7 @@ public interface Views {
 	/**
 	 * The Interface Project.
 	 */
-	public class Project extends User implements BaseEntity, Issue, Epic, Sprint {
+	public class Project extends User implements BaseEntity  , Message {
 
 	}
 	
@@ -74,14 +76,12 @@ public interface Views {
 	/**
 	 * The Interface Issue.
 	 */
-	public interface Issue extends BaseEntity {
 
-	}
 
 	/**
 	 * The Interface Epic.
 	 */
-	public interface Epic extends BaseEntity {
+	public interface Message extends BaseEntity {
 
 	}
 	
@@ -100,15 +100,13 @@ public interface Views {
 
 	}
 
-	public class StoryPageable extends User implements  Epic, PageView {
+	public class StoryPageable extends User implements  PageView {
 
 	}
 
 	/**
 	 * The Interface Sprint.
 	 */
-	public interface Sprint extends BaseEntity {
 
-	}
 
 }

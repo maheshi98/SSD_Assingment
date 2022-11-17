@@ -65,7 +65,7 @@ export class MessageComponent implements OnInit {
     if (this.issueForm.valid) {
       this.saveIssue();
       this.toastrService.success(status || '', `Successfully Message Saved!`);
-      this.router.navigate(['/dashboard']);
+      this.router.navigate(['/message-list']);
     } else {
       this.validateAllFormFields(this.issueForm);
       this.toastrService.danger(status || '', `Failed to save Message!`);

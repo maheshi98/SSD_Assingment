@@ -27,12 +27,15 @@ public class Message extends BaseEntity {
     /** The identifier. */
     @NotNull
     @Column(name = "identifier", unique = true, updatable = false)
+    @JsonView(Views.Message.class)
     private String identifier;
 
     @Column(name = "description")
+    @JsonView(Views.Message.class)
     private String description;
 
     @Column(name = "digitalsign")
+    @JsonView(Views.Message.class)
     private String digitalSign;
 
     @Override

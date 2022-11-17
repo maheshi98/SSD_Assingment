@@ -16,4 +16,8 @@ export class MessageService {
   createMessage(message: Message): Observable<object> {
     return this.http.post(`${environment.baseUrl}message/`, message);
   }
+   // getall
+   getUserList(): Observable<any> {
+    return this.http.get(`${environment.baseUrl}message/`);
+  }
 }

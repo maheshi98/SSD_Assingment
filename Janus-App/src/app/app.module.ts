@@ -43,6 +43,8 @@ import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { MessageComponent } from './components/message/message.component';
 import { AttachmentComponent } from './components/attachment/attachment.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { MessageListComponent } from './components/message/message-list/message-list.component';
 
 // import {MatButtonModule} from '@angular/material' ;
 
@@ -63,6 +65,8 @@ import { AttachmentComponent } from './components/attachment/attachment.componen
     MainComponent,
     MessageComponent,
     AttachmentComponent,
+    ProfileComponent,
+    MessageListComponent
   ],
 
   imports: [
